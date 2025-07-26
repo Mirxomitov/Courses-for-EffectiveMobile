@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:attr/colorControlHighlight">
+
+    <item>
+        <selector>
+            <!-- Disabled state -->
+            <item android:state_enabled="false">
+                <shape android:shape="rectangle">
+                    <solid android:color="#555555" />
+                    <corners android:radius="24dp" />
+                </shape>
+            </item>
+
+            <!-- Enabled state -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/badgeGreen" />
+                    <corners android:radius="24dp" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

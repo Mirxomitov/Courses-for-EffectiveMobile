@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundDark"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/fragment_horizontal_margin"
+    tools:context=".ui.login.LoginFragment">
+
+    <TextView
+        android:id="@+id/text_vxod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="@dimen/fragment_item_margin_top"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/login"
+        android:textColor="@color/textWhite"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/text_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/email"
+        android:textColor="@color/textWhite"
+        android:textSize="24sp" />
+
+    <EditText
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="400"
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="@string/example_gmail_com"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/fragment_item_margin_top"
+        android:textColor="@color/textWhite"
+        android:textColorHint="@color/textSecondaryGray"
+        tools:ignore="UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/text_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="@dimen/fragment_item_margin_top"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/password"
+        android:textColor="@color/textWhite"
+        android:textSize="24sp" />
+
+    <EditText
+        android:fontFamily="@font/roboto_regular"
+        android:textFontWeight="400"
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="@string/example_password"
+        android:inputType="textPassword"
+        android:padding="@dimen/fragment_item_margin_top"
+        android:textColor="@color/textWhite"
+        android:textColorHint="@color/textSecondaryGray" />
+
+    <FrameLayout
+        android:id="@+id/loginButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="@font/roboto_medium"
+            android:enabled="false"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@color/textWhite"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/loginProgress"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_item_margin_top"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="8dp"
+            android:text="@string/no_account"
+            android:textColor="@color/textWhite"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/registration"
+            android:textColor="@color/badgeGreen"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"
+        android:text="@string/password_recovery"
+        android:textColor="@color/badgeGreen"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/textSecondaryGray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/button_vk"
+            android:layout_marginEnd="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_vk" />
+
+        <ImageView
+            android:id="@+id/button_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_ok" />
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Courses</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">favorites</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="email">Email</string>
+    <string name="login">Вход</string>
+    <string name="example_password">Введите пароль</string>
+    <string name="password">Пароль</string>
+    <string name="no_account">Нет аккаунта?</string>
+    <string name="registration">Регистрация</string>
+    <string name="password_recovery">Забыл пароль</string>
+    <string name="invalid_email">Введите корректный email</string>
+    <string name="invalid_password">Пароль должен содержать не менее 8 символов</string>
+</resources>
