@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.core.util.CoursesLogger
 import com.example.core.util.SharedPrefsUtils
 import com.example.data.repository.AuthRepositoryImpl
 import com.example.domain.repository.AuthRepository
@@ -14,9 +15,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val authRepository: AuthRepository = AuthRepositoryImpl()
 
     private val _email = MutableLiveData("")
     private val _password = MutableLiveData("")
@@ -44,6 +45,7 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             authRepository.login(email.trim(), password.trim()).fold(
                 onSuccess = {
+                    CoursesLogger.d("Login successful: $it")
                 },
                 onFailure = {
 

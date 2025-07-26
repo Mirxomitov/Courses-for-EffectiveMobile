@@ -3,7 +3,6 @@ package com.example.courses
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.courses.databinding.ActivityMainBinding
@@ -28,13 +27,10 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
+            // Show or hide the bottom navigation based on the current destination
             binding.navView.isVisible = destination.id !in authDestinations
         }
 
         binding.navView.setupWithNavController(navController)
     }
-}
-
-private fun isUserLoggedIn(): Boolean {
-    return false
 }
