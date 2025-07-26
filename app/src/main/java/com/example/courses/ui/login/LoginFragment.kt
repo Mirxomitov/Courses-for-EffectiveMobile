@@ -1,18 +1,22 @@
 package com.example.courses.ui.login
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.courses.R
 import com.example.courses.databinding.FragmentLoginBinding
 import com.example.core.util.ui.isCyrillic
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.core.net.toUri
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -57,23 +61,50 @@ class LoginFragment : Fragment() {
         viewModel.isFormValid.observe(viewLifecycleOwner) { isValid ->
             binding.loginButton.isEnabled = isValid
         }
+
+        viewModel.uiState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                LoginUiState.EnterLoading -> {
+                    binding.loginButton.isEnabled = false
+                    binding.loginProgress.visibility = View.VISIBLE
+                }
+
+                LoginUiState.EnterSuccess -> {
+                    binding.loginProgress.visibility = View.GONE
+                    findNavController().navigate(R.id.action_loginFragment_to_navigation_home)
+                }
+
+                is LoginUiState.EnterError -> {
+                    binding.loginButton.isEnabled = true
+                    binding.loginProgress.visibility = View.GONE
+                    Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                }
+
+                else -> {}
+            }
+        }
     }
 
     private fun setupClicks() {
         binding.loginButton.setOnClickListener {
-            viewModel.isFormValid.value.let { isValid ->
-                if (isValid == true) {
-                    val email = binding.etEmail.text.toString()
-                    val password = binding.etPassword.text.toString()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            viewModel.login(email, password)
+        }
 
-                    viewModel.login(email, password)
-                } else {
-                    binding.etEmail.error = getString(R.string.invalid_email)
-                    binding.etPassword.error = getString(R.string.invalid_password)
-                }
+        binding.buttonOk.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = "https://vk.com/".toUri()
+            }
+            startActivity(intent)
+        }
+        binding.buttonOk.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = "https://ok.ru/".toUri()
+            }
+            startActivity(intent)
         }
     }
-        }
 
     override fun onDestroyView() {
         super.onDestroyView()

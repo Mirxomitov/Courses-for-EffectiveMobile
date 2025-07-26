@@ -17,10 +17,11 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ) : ViewModel() {
-
-
     private val _email = MutableLiveData("")
     private val _password = MutableLiveData("")
+
+    private val _uiState : MutableLiveData<LoginUiState> = MutableLiveData(LoginUiState.Initial)
+    val uiState: LiveData<LoginUiState> get() = _uiState
 
     private val _isFormValid = MutableLiveData(false)
     val isFormValid: LiveData<Boolean> get() = _isFormValid
@@ -43,12 +44,14 @@ class LoginViewModel @Inject constructor(
 
     fun login(email: String, password: String) {
         viewModelScope.launch {
+            _uiState.value = LoginUiState.EnterLoading
             authRepository.login(email.trim(), password.trim()).fold(
                 onSuccess = {
-                    CoursesLogger.d("Login successful: $it")
+                    _uiState.value = LoginUiState.EnterSuccess
                 },
                 onFailure = {
-
+                    CoursesLogger.d("Login failed: ${it.message}")
+                    _uiState.value = LoginUiState.EnterError(it.message ?: "Unknown error")
                 },
             )
         }
