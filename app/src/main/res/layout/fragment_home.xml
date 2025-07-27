@@ -15,7 +15,6 @@
         tools:itemCount="2"
         tools:listitem="@layout/item_course" />
 
-
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"

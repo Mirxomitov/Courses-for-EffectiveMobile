@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.adapterdelegates4)
     implementation(libs.glide)
     implementation(libs.gson)
+    implementation(libs.androidx.palette)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

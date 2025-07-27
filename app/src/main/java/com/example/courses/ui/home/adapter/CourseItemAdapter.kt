@@ -1,6 +1,7 @@
 package com.example.courses.ui.home.adapter
 
 import com.bumptech.glide.Glide
+import com.example.core.util.toReadableDate
 import com.example.courses.databinding.ItemCourseBinding
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
@@ -15,6 +16,7 @@ class CourseItemAdapter(
 
     fun setData(data: List<CourseItemModel>) {
         items = data
+        // TODO : change to DiffUtil
         notifyDataSetChanged()
     }
 }
@@ -34,8 +36,11 @@ fun courseAdapterDelegate(onClick: (CourseItemWithImage) -> Unit) =
             Glide.with(binding.root.context)
                 .load(assetPath)
                 .into(binding.ivCourseImage)
+
             binding.tvCourseTitle.text = item.data.title
             binding.tvCourseDescription.text = item.data.text
             binding.tvCoursePrice.text = price
+            binding.tvRate.text = item.data.rate
+            binding.tvDate.text = item.data.startDate.toReadableDate()
         }
     }

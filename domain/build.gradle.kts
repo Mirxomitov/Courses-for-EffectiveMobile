@@ -4,12 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.core"
+    namespace = "com.example.domain"
     compileSdk = 36
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 36
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

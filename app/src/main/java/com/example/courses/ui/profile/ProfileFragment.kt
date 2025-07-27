@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.example.courses.databinding.FragmentNotificationsBinding
+import com.example.courses.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentProfileBinding? = null
 
     private val binding get() = _binding!!
     private val profileViewModel : ProfileViewModel by viewModels()
@@ -26,7 +25,7 @@ class ProfileFragment : Fragment() {
     ): View {
 
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications

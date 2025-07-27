@@ -5,10 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.util.CoursesLogger
-import com.example.core.util.SharedPrefsUtils
-import com.example.data.repository.AuthRepositoryImpl
 import com.example.domain.repository.AuthRepository
-import com.example.core.util.ui.isValidEmail
+import com.example.core.util.isValidEmail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

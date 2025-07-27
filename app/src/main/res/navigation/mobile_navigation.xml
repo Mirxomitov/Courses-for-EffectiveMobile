@@ -16,16 +16,16 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_favorites"
         android:name="com.example.courses.ui.favorites.FavoritesFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_favorites" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_profile"
         android:name="com.example.courses.ui.profile.ProfileFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/courseDetailsFragment"
         android:name="com.example.courses.ui.course_details.CourseDetailsFragment"

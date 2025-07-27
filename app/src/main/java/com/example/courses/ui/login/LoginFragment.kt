@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.example.core.util.ui.isCyrillic
+import com.example.core.util.isCyrillic
 import com.example.courses.R
 import com.example.courses.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint

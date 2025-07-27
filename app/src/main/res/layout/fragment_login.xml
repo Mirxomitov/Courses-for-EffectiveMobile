@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginTop="@dimen/fragment_item_margin_top"
+        android:layout_marginTop="@dimen/fragment_item_margin"
         android:fontFamily="@font/roboto_regular"
         android:text="@string/login"
         android:textColor="@color/textWhite"
@@ -41,7 +41,7 @@
         android:background="@drawable/edit_text_bg"
         android:hint="@string/example_gmail_com"
         android:inputType="textEmailAddress"
-        android:padding="@dimen/fragment_item_margin_top"
+        android:padding="@dimen/fragment_item_margin"
         android:textColor="@color/textWhite"
         android:textColorHint="@color/textSecondaryGray"
         tools:ignore="UnusedAttribute" />
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginTop="@dimen/fragment_item_margin_top"
+        android:layout_marginTop="@dimen/fragment_item_margin"
         android:fontFamily="@font/roboto_regular"
         android:text="@string/password"
         android:textColor="@color/textWhite"
@@ -67,7 +67,7 @@
         android:background="@drawable/edit_text_bg"
         android:hint="@string/example_password"
         android:inputType="textPassword"
-        android:padding="@dimen/fragment_item_margin_top"
+        android:padding="@dimen/fragment_item_margin"
         android:textColor="@color/textWhite"
         android:textColorHint="@color/textSecondaryGray" />
 
@@ -100,7 +100,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/fragment_item_margin_top"
+        android:layout_marginTop="@dimen/fragment_item_margin"
         android:gravity="center">
 
         <TextView
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:text="@string/registration"
-            android:textColor="@color/badgeGreen"
+            android:textColor="@color/green"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -128,7 +128,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="4dp"
         android:text="@string/password_recovery"
-        android:textColor="@color/badgeGreen"
+        android:textColor="@color/green"
         android:textSize="16sp"
         android:textStyle="bold" />
 

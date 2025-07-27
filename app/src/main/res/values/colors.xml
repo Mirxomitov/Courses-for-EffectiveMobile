@@ -3,12 +3,11 @@
     <color name="backgroundDark">#1A1A1A</color>
     <color name="backgroundDarkVariant">#121212</color>
     <color name="cardBackground">#24252A</color>
-    <color name="badgeGreen">#00C566</color>
+    <color name="green">#00C566</color>
     <color name="highlightOrange">#F7931A</color>
     <color name="brandPink">#FF69B4</color>
     <color name="textWhite">#F2F2F3</color>
     <color name="textSecondaryGray">#9E9E9E</color>
-    <color name="priceGreen">#34A853</color>
     <color name="filterIconActive">#8A2BE2</color>
     <color name="bottomNavBarBackground">#F5F5F5</color>
 

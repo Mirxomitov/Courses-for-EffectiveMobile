@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!-- Set the nav bar color -->
+        <item name="android:navigationBarColor">@color/cardBackground</item>
     </style>
 </resources>

@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.util.CoursesLogger
+import com.example.courses.R
 import com.example.courses.databinding.FragmentHomeBinding
 import com.example.courses.ui.home.adapter.CourseItemAdapter
 import com.example.courses.ui.home.adapter.CourseItemWithImage
-import com.example.courses.ui.home.HomeUiState
 import com.example.courses.utils.collectWhenStarted
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -75,8 +77,10 @@ class HomeFragment : Fragment() {
     }
     private fun setAdapter() {
         adapter = CourseItemAdapter { course ->
-            Toast.makeText(this.context, "hello $course", Toast.LENGTH_SHORT).show()
-            // Here you can handle the click event for the course item
+            findNavController().navigate(
+                R.id.action_navigation_home_to_courseDetailsFragment,
+                bundleOf("courseId" to "id")
+            )
         }
 
         binding.rvCourses.layoutManager = LinearLayoutManager(this.context)

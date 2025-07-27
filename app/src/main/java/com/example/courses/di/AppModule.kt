@@ -14,13 +14,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Provides
-    @Singleton
-    fun provideContext(app: CoursesApp): Context {
-        return app.applicationContext
-    }
-
-    @Provides
-    @Singleton
-    fun provideGson(): Gson = GsonBuilder().create()
+//    @Provides
+//    @Singleton
+//    fun provideContext(app: CoursesApp): Context {
+//        return app.applicationContext
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideGson(): Gson = GsonBuilder().create()
 }
