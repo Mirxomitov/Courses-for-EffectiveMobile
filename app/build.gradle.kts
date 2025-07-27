@@ -50,6 +50,10 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.57")
     kapt("com.google.dagger:hilt-android-compiler:2.57")
 
+    implementation(libs.adapterdelegates4)
+    implementation(libs.glide)
+    implementation(libs.gson)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

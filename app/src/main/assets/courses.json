@@ -8,7 +8,8 @@
       "rate": "4.9",
       "startDate": "2024-05-22",
       "hasLike": false,
-      "publishDate": "2024-02-02"
+      "publishDate": "2024-02-02",
+      "imageAsset": "image100.png"
     },
     {
       "id": 101,
@@ -18,7 +19,8 @@
       "rate": "3.9",
       "startDate": "2024-09-10",
       "hasLike": false,
-      "publishDate": "2024-01-20"
+      "publishDate": "2024-01-20",
+      "imageAsset": "image101.png"
     },
     {
       "id": 102,
@@ -28,7 +30,8 @@
       "rate": "4.3",
       "startDate": "2024-10-12",
       "hasLike": true,
-      "publishDate": "2024-08-10"
+      "publishDate": "2024-08-10",
+      "imageAsset": "image102.png"
     },
     {
       "id": 103,
@@ -38,7 +41,8 @@
       "rate": "4.5",
       "startDate": "2024-04-15",
       "hasLike": false,
-      "publishDate": "2024-01-13"
+      "publishDate": "2024-01-13",
+      "imageAsset": "image103.png"
     },
     {
       "id": 104,
@@ -48,7 +52,8 @@
       "rate": "4.7",
       "startDate": "2024-06-20",
       "hasLike": false,
-      "publishDate": "2024-03-12"
+      "publishDate": "2024-03-12",
+      "imageAsset": "image104.png"
     }
   ]
 }

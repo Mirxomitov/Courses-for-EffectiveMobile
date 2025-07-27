@@ -1,22 +1,22 @@
 package com.example.courses.ui.login
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.example.core.util.ui.isCyrillic
 import com.example.courses.R
 import com.example.courses.databinding.FragmentLoginBinding
-import com.example.core.util.ui.isCyrillic
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.core.net.toUri
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -71,7 +71,13 @@ class LoginFragment : Fragment() {
 
                 LoginUiState.EnterSuccess -> {
                     binding.loginProgress.visibility = View.GONE
-                    findNavController().navigate(R.id.action_loginFragment_to_navigation_home)
+                    findNavController().navigate(
+                        R.id.action_loginFragment_to_navigation_home,
+                        null,
+                        NavOptions.Builder()
+                            .setPopUpTo(R.id.loginFragment, true)
+                            .build()
+                    )
                 }
 
                 is LoginUiState.EnterError -> {

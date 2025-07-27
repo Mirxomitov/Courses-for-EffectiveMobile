@@ -13,4 +13,6 @@
     <string name="password_recovery">Забыл пароль</string>
     <string name="invalid_email">Введите корректный email</string>
     <string name="invalid_password">Пароль должен содержать не менее 8 символов</string>
+    <string name="course_image">course image</string>
+    <string name="more">Подробнее</string>
 </resources>

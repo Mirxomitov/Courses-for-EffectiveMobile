@@ -8,9 +8,6 @@ data class CourseData(
     val rate: String,
     val startDate: String,
     val hasLike: Boolean,
-    val publishDate: String
-)
-
-data class CourseResponse(
-    val courses: List<CourseData>
+    val publishDate: String,
+    val imageAsset: String,
 )

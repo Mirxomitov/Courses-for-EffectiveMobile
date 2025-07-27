@@ -7,7 +7,7 @@
             <!-- Disabled state -->
             <item android:state_enabled="false">
                 <shape android:shape="rectangle">
-                    <solid android:color="#555555" />
+                    <solid android:color="@color/cardBackground" />
                     <corners android:radius="24dp" />
                 </shape>
             </item>
