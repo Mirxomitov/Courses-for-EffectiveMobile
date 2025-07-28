@@ -18,4 +18,6 @@
     <string name="home">Главная</string>
     <string name="favorites">Избранное</string>
     <string name="profile">Профиль</string>
+    <string name="search_courses">Search courses...</string>
+    <string name="by_adding_date">По дате добавления</string>
 </resources>

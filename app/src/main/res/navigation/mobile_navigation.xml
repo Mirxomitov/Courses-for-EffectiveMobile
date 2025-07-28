@@ -26,11 +26,13 @@
         android:name="com.example.courses.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/courseDetailsFragment"
         android:name="com.example.courses.ui.course_details.CourseDetailsFragment"
         android:label="fragment_course_details"
         tools:layout="@layout/fragment_course_details" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.courses.ui.login.LoginFragment"

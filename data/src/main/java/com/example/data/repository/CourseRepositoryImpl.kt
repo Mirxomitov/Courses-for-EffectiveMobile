@@ -2,16 +2,52 @@ package com.example.data.repository
 
 import com.example.domain.model.CourseData
 import com.example.domain.repository.CourseRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 
 class CourseRepositoryImpl : CourseRepository {
+    private val _courses = MutableStateFlow<List<CourseData>>(emptyList())
+    override val courses: StateFlow<List<CourseData>> = _courses.asStateFlow()
+
+    override val favoriteCourses: StateFlow<List<CourseData>> =
+        _courses.map { courses ->
+            courses.filter { it.hasLike }
+        }.stateIn(
+            scope = CoroutineScope(SupervisorJob() + Dispatchers.Default),
+            started = SharingStarted.Eagerly,
+            initialValue = emptyList()
+        )
 
     override suspend fun getAllCourses(): Result<List<CourseData>> {
-        delay(500)
-        return Result.success(listFromJsonAssets())
+        val fetched = simulateFetchingFromInternet()
+        _courses.value = fetched
+
+        return Result.success(_courses.value)
     }
 
-    private fun listFromJsonAssets(): List<CourseData> {
+    override suspend fun toggleFavorite(course: CourseData): Result<Unit> {
+        val toggledCourse = _courses.value.map {
+            if (it.id == course.id) {
+                it.copy(hasLike = !it.hasLike)
+            } else {
+                it
+            }
+        }
+        _courses.value = toggledCourse
+        return Result.success(Unit)
+    }
+
+    private suspend fun simulateFetchingFromInternet(): List<CourseData> {
+        delay(500)
         return listOf(
             CourseData(
                 id = 100,

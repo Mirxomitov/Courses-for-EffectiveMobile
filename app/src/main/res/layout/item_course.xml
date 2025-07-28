@@ -76,6 +76,23 @@
                 app:layout_constraintLeft_toRightOf="@id/container_rate"
                 tools:targetApi="28" />
 
+            <FrameLayout
+                android:id="@+id/favourites_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/image_bg"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <ImageView
+                    android:id="@+id/btn_favorite"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_margin="6dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_bookmark" />
+            </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

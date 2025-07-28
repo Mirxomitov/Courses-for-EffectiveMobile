@@ -1,25 +1,24 @@
-package com.example.courses.ui.home.adapter
+package com.example.courses.ui.favorites.adapter
 
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.example.core.util.CoursesLogger
 import com.example.core.util.toReadableDate
 import com.example.courses.R
 import com.example.courses.databinding.ItemCourseBinding
 import com.example.domain.model.CourseData
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
-class CourseItemAdapter(
+class FavoriteCourseItemAdapter(
     onClick: (CourseData) -> Unit,
-    onFavoriteClick: (CourseData) -> Unit
-) : com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter<List<CourseItemModel>>() {
+    onFavoriteClick: (CourseData) -> Unit,
+) : com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter<List<FavoriteCourseItemModel>>() {
 
     init {
         delegatesManager.addDelegate(courseAdapterDelegate(onClick, onFavoriteClick))
 //        delegatesManager.addDelegate(otherAdapterDelegatesHere)
     }
 
-    fun setData(data: List<CourseItemModel>) {
+    fun setData(data: List<FavoriteCourseItemModel>) {
         items = data
         // TODO : change to DiffUtil
         notifyDataSetChanged()
@@ -28,13 +27,12 @@ class CourseItemAdapter(
 
 
 fun courseAdapterDelegate(onClick: (CourseData) -> Unit, onFavoriteClick: (CourseData) -> Unit) =
-    adapterDelegateViewBinding<CourseItemWithImage, CourseItemModel, ItemCourseBinding>(
+    adapterDelegateViewBinding<FavoriteCourseItemWithImage, FavoriteCourseItemModel, ItemCourseBinding>(
         { inflater, parent -> ItemCourseBinding.inflate(inflater, parent, false) }) {
         binding.btnShowCourse.setOnClickListener {
             onClick(item.data)
         }
         binding.btnFavorite.setOnClickListener {
-            CoursesLogger.d("CourseItemAdapter - onFavoriteClick: ${item.data.title}")
             onFavoriteClick(item.data)
         }
 
@@ -54,7 +52,7 @@ fun courseAdapterDelegate(onClick: (CourseData) -> Unit, onFavoriteClick: (Cours
             binding.btnFavorite.setColorFilter(
                 ContextCompat.getColor(
                     binding.root.context,
-                    if (!item.data.hasLike) R.color.textWhite else R.color.green
+                    R.color.green
                 )
             )
         }

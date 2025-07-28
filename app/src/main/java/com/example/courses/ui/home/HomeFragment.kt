@@ -22,10 +22,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
-
     private lateinit var adapter: CourseItemAdapter
 
     override fun onCreateView(
@@ -45,17 +43,24 @@ class HomeFragment : Fragment() {
         setListeners()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setListeners() {
         viewModel.uiState.collectWhenStarted(viewLifecycleOwner) {
             when (it) {
                 is HomeUiState.Initial -> {}
                 is HomeUiState.CoursesSuccess -> {
+                    binding.progressBar.visibility = View.GONE
                     adapter.setData(viewModel.courses.value.map { course ->
                         CourseItemWithImage(course)
                     })
 
                     CoursesLogger.d("Courses loaded successfully: ${viewModel.courses.value.size} courses")
                 }
+
                 is HomeUiState.CoursesError -> {
                     binding.progressBar.visibility = View.GONE
                     Toast.makeText(
@@ -64,24 +69,33 @@ class HomeFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
                 is HomeUiState.CoursesLoading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }
             }
         }
+        viewModel.courses.collectWhenStarted(viewLifecycleOwner) { courses ->
+            CoursesLogger.d("Courses updated: ${courses.size} courses")
+            adapter.setData(courses.map { course ->
+                CourseItemWithImage(course)
+            })
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
     private fun setAdapter() {
-        adapter = CourseItemAdapter { course ->
-            findNavController().navigate(
-                R.id.action_navigation_home_to_courseDetailsFragment,
-                bundleOf("courseId" to "id")
-            )
-        }
+        adapter = CourseItemAdapter(
+            onClick = { course ->
+                findNavController().navigate(
+                    R.id.action_navigation_home_to_courseDetailsFragment,
+                    bundleOf("courseId" to "id")
+                )
+            },
+            onFavoriteClick = { course ->
+                CoursesLogger.d("HomeFragment - onFavoriteClick: ${course.title}")
+                viewModel.onFavoriteClick(course)
+            },
+        )
 
         binding.rvCourses.layoutManager = LinearLayoutManager(this.context)
         binding.rvCourses.adapter = adapter
