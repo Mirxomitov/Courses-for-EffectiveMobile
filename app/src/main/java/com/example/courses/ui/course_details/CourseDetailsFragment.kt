@@ -31,10 +31,6 @@ class CourseDetailsFragment : Fragment() {
         _binding = FragmentCourseDetailsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textCourseDetails
-        favoritesViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

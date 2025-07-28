@@ -3,42 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_home">
-
+    app:startDestination="@id/loginFragment">
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/loginFragment"
+        android:name="com.example.courses.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
         android:name="com.example.courses.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_courseDetailsFragment"
+            android:id="@+id/action_homeFragment_to_courseDetailsFragment"
             app:destination="@id/courseDetailsFragment" />
     </fragment>
-
     <fragment
-        android:id="@+id/navigation_favorites"
+        android:id="@+id/favoritesFragment"
         android:name="com.example.courses.ui.favorites.FavoritesFragment"
-        android:label="@string/title_favorites"
-        tools:layout="@layout/fragment_favorites" />
-
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/navigation_profile"
+        android:id="@+id/profileFragment"
         android:name="com.example.courses.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
+        android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
-
     <fragment
         android:id="@+id/courseDetailsFragment"
         android:name="com.example.courses.ui.course_details.CourseDetailsFragment"
         android:label="fragment_course_details"
         tools:layout="@layout/fragment_course_details" />
-
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.courses.ui.login.LoginFragment"
-        android:label="LoginFragment" >
-        <action
-            android:id="@+id/action_loginFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
-    </fragment>
 </navigation>

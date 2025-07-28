@@ -87,7 +87,7 @@ class HomeFragment : Fragment() {
         adapter = CourseItemAdapter(
             onClick = { course ->
                 findNavController().navigate(
-                    R.id.action_navigation_home_to_courseDetailsFragment,
+                    R.id.action_homeFragment_to_courseDetailsFragment,
                     bundleOf("courseId" to "id")
                 )
             },

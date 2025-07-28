@@ -12,15 +12,4 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
-
-//    @Provides
-//    @Singleton
-//    fun provideContext(app: CoursesApp): Context {
-//        return app.applicationContext
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun provideGson(): Gson = GsonBuilder().create()
-}
+object AppModule

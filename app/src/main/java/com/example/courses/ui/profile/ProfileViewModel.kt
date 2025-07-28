@@ -10,7 +10,7 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor() : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Profile"
+        value = "Профиль пользователя"
     }
     val text: LiveData<String> = _text
 }

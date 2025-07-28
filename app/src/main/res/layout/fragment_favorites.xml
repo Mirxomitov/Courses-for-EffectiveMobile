@@ -9,6 +9,18 @@
     tools:context=".ui.favorites.FavoritesFragment">
 
 
+    <TextView
+        android:id="@+id/tvEmptyFavorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_regular"
+        android:visibility="gone"
+        android:text="@string/empty_favorites"
+        android:textColor="@color/textSecondaryGray"
+        android:textSize="14sp" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

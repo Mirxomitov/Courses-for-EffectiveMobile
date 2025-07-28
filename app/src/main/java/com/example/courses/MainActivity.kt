@@ -1,5 +1,6 @@
 package com.example.courses
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -12,6 +13,7 @@ import android.widget.LinearLayout
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.ImageView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -39,29 +41,29 @@ class MainActivity : AppCompatActivity() {
 
         binding.navHome.setOnClickListener {
             val options = NavOptions.Builder()
-                .setPopUpTo(R.id.navigation_home, inclusive = false, saveState = true)
+                .setPopUpTo(R.id.homeFragment, inclusive = false, saveState = true)
                 .setLaunchSingleTop(true)
                 .setRestoreState(true)
                 .build()
-            navController.navigate(R.id.navigation_home, null, options)
+            navController.navigate(R.id.homeFragment, null, options)
         }
 
         binding.navFavorite.setOnClickListener {
             val options = NavOptions.Builder()
-                .setPopUpTo(R.id.navigation_home, inclusive = false, saveState = true)
+                .setPopUpTo(R.id.homeFragment, inclusive = false, saveState = true)
                 .setLaunchSingleTop(true)
                 .setRestoreState(true)
                 .build()
-            navController.navigate(R.id.navigation_favorites, null, options)
+            navController.navigate(R.id.favoritesFragment, null, options)
         }
 
         binding.navProfile.setOnClickListener {
             val options = NavOptions.Builder()
-                .setPopUpTo(R.id.navigation_home, inclusive = false, saveState = true)
+                .setPopUpTo(R.id.homeFragment, inclusive = false, saveState = true)
                 .setLaunchSingleTop(true)
                 .setRestoreState(true)
                 .build()
-            navController.navigate(R.id.navigation_profile, null, options)
+            navController.navigate(R.id.profileFragment, null, options)
         }
     }
 
@@ -69,15 +71,15 @@ class MainActivity : AppCompatActivity() {
         resetAllNavItems()
 
         when (destinationId) {
-            R.id.navigation_home, R.id.courseDetailsFragment -> {
+            R.id.homeFragment, R.id.courseDetailsFragment -> {
                 setNavItemSelected(binding.navHome)
             }
 
-            R.id.navigation_favorites -> {
+            R.id.favoritesFragment -> {
                 setNavItemSelected(binding.navFavorite)
             }
 
-            R.id.navigation_profile -> {
+            R.id.profileFragment -> {
                 setNavItemSelected(binding.navProfile)
             }
         }

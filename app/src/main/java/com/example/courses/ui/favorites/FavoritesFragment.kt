@@ -80,6 +80,12 @@ class FavoritesFragment : Fragment() {
             adapter.setData(favoriteCourses.map { course ->
                 FavoriteCourseItemWithImage(course)
             })
+
+            if(favoriteCourses.isEmpty()) {
+                binding.tvEmptyFavorites.visibility = View.VISIBLE
+            } else {
+                binding.tvEmptyFavorites.visibility = View.GONE
+            }
         }
     }
 
@@ -87,7 +93,7 @@ class FavoritesFragment : Fragment() {
         adapter = FavoriteCourseItemAdapter(
             onClick = { course ->
                 findNavController().navigate(
-                    R.id.action_navigation_home_to_courseDetailsFragment,
+                    R.id.action_favoritesFragment_to_courseDetailsFragment,
                     bundleOf("courseId" to "id")
                 )
             },
