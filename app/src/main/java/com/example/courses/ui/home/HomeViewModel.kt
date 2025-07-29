@@ -65,4 +65,10 @@ class HomeViewModel @Inject constructor(
             )
         }
     }
+
+    fun filterByDate() {
+        viewModelScope.launch {
+            courseRepository.filterByDate()
+        }
+    }
 }

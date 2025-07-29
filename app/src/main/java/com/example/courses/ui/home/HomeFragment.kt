@@ -41,6 +41,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setListeners()
+        binding.tvFilter.setOnClickListener {
+            viewModel.filterByDate()
+        }
     }
 
     override fun onDestroyView() {
