@@ -11,6 +11,7 @@ import androidx.core.net.toUri
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.core.util.isCyrillic
@@ -72,10 +73,14 @@ class LoginFragment : Fragment() {
                 LoginUiState.EnterSuccess -> {
                     binding.loginProgress.visibility = View.GONE
                     findNavController().navigate(
-                        R.id.action_loginFragment_to_homeFragment,
+                        R.id.homeFragment,
                         null,
                         NavOptions.Builder()
-                            .setPopUpTo(R.id.loginFragment, true)
+                            .setPopUpTo(
+                                R.id.loginFragment,
+                                inclusive = true,
+                                saveState = true
+                            )
                             .build()
                     )
                 }

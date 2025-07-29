@@ -72,4 +72,17 @@ class HomeViewModel @Inject constructor(
             )
         }
     }
+
+    fun filterByDate() {
+        viewModelScope.launch {
+            courseRepository.filterByDate().fold(
+                onSuccess = {
+                    CoursesLogger.d("Filter toggled successfully")
+                },
+                onFailure = {
+                    _uiState.value = HomeUiState.CoursesError(it.message ?: "Unknown error")
+                }
+            )
+        }
+    }
 }
