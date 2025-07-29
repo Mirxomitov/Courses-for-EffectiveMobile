@@ -72,7 +72,7 @@ class LoginFragment : Fragment() {
                 LoginUiState.EnterSuccess -> {
                     binding.loginProgress.visibility = View.GONE
                     findNavController().navigate(
-                        R.id.action_loginFragment_to_homeFragment,
+                        R.id.action_loginFragment_to_home,
                         null,
                         NavOptions.Builder()
                             .setPopUpTo(R.id.loginFragment, true)

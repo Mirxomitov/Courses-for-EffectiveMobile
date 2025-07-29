@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Courses</string>
+
     <string name="title_home">Home</string>
-    <string name="title_favorites">favorites</string>
-    <string name="title_profile">Notifications</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_login">Login</string>
+    <string name="title_course_details">Course Details</string>
+
     <string name="example_gmail_com">example@gmail.com</string>
     <string name="email">Email</string>
     <string name="login">Вход</string>

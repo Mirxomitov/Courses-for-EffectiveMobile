@@ -1,19 +1,18 @@
 package com.example.courses
 
-import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.navigation.NavOptions
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.NavigationUiSaveStateControl
+import androidx.navigation.ui.setupWithNavController
 import com.example.courses.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import android.widget.LinearLayout
-import android.widget.FrameLayout
-import android.widget.TextView
-import android.widget.ImageView
-import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -35,82 +33,27 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.customBottomNav.isVisible = destination.id !in authDestinations
-            updateBottomNavSelection(destination.id)
+            binding.bottomNav.isVisible = destination.id !in authDestinations
         }
 
-        binding.navHome.setOnClickListener {
-            val options = NavOptions.Builder()
-                .setPopUpTo(R.id.homeFragment, inclusive = false, saveState = true)
-                .setLaunchSingleTop(true)
-                .setRestoreState(true)
-                .build()
-            navController.navigate(R.id.homeFragment, null, options)
+        val states = arrayOf(
+            intArrayOf(android.R.attr.state_checked),    // selected
+            intArrayOf(-android.R.attr.state_checked)    // unselected
+        )
+
+        val colors = intArrayOf(
+            getColor(R.color.green),      // selected icon/text color
+            getColor(R.color.textWhite)   // unselected icon/text color
+        )
+
+        val colorStateList = ColorStateList(states, colors)
+
+        binding.bottomNav.apply {
+            itemIconTintList = colorStateList
+            itemTextColor = colorStateList
+            itemActiveIndicatorColor = ColorStateList.valueOf(getColor(R.color.bottomNavBarBackground))
         }
 
-        binding.navFavorite.setOnClickListener {
-            val options = NavOptions.Builder()
-                .setPopUpTo(R.id.homeFragment, inclusive = false, saveState = true)
-                .setLaunchSingleTop(true)
-                .setRestoreState(true)
-                .build()
-            navController.navigate(R.id.favoritesFragment, null, options)
-        }
-
-        binding.navProfile.setOnClickListener {
-            val options = NavOptions.Builder()
-                .setPopUpTo(R.id.homeFragment, inclusive = false, saveState = true)
-                .setLaunchSingleTop(true)
-                .setRestoreState(true)
-                .build()
-            navController.navigate(R.id.profileFragment, null, options)
-        }
-    }
-
-    private fun updateBottomNavSelection(destinationId: Int) {
-        resetAllNavItems()
-
-        when (destinationId) {
-            R.id.homeFragment, R.id.courseDetailsFragment -> {
-                setNavItemSelected(binding.navHome)
-            }
-
-            R.id.favoritesFragment -> {
-                setNavItemSelected(binding.navFavorite)
-            }
-
-            R.id.profileFragment -> {
-                setNavItemSelected(binding.navProfile)
-            }
-        }
-    }
-
-    private fun resetAllNavItems() {
-        resetNavItem(binding.navHome)
-        resetNavItem(binding.navFavorite)
-        resetNavItem(binding.navProfile)
-    }
-
-    private fun resetNavItem(navItem: LinearLayout) {
-        val frameLayout = navItem.getChildAt(0) as FrameLayout
-        val textView = navItem.getChildAt(1) as TextView
-        val imageView = frameLayout.getChildAt(0) as ImageView
-
-        frameLayout.background = null
-
-        imageView.setColorFilter(ContextCompat.getColor(this, R.color.textWhite))
-        textView.setTextColor(ContextCompat.getColor(this, R.color.textWhite))
-    }
-
-    private fun setNavItemSelected(navItem: LinearLayout) {
-        val frameLayout = navItem.getChildAt(0) as FrameLayout
-        val textView = navItem.getChildAt(1) as TextView
-        val imageView = frameLayout.getChildAt(0) as ImageView
-
-        frameLayout.background = ContextCompat.getDrawable(this, R.drawable.nav_selected_bg)
-
-        // Set green colors
-        imageView.setColorFilter(ContextCompat.getColor(this, R.color.green))
-        textView.setTextColor(ContextCompat.getColor(this, R.color.green))
+        binding.bottomNav.setupWithNavController(navController)
     }
 }
