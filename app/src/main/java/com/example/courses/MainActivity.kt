@@ -1,6 +1,5 @@
 package com.example.courses
 
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -13,7 +12,6 @@ import android.widget.LinearLayout
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.ImageView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -71,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         resetAllNavItems()
 
         when (destinationId) {
-            R.id.homeFragment, R.id.courseDetailsFragment -> {
+            R.id.homeFragment -> {
                 setNavItemSelected(binding.navHome)
             }
 

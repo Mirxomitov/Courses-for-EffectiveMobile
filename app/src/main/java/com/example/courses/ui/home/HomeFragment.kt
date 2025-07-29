@@ -41,6 +41,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setListeners()
+        binding.tvFilter.setOnClickListener {
+            viewModel.filterByDate()
+        }
     }
 
     override fun onDestroyView() {
@@ -86,10 +89,7 @@ class HomeFragment : Fragment() {
     private fun setAdapter() {
         adapter = CourseItemAdapter(
             onClick = { course ->
-                findNavController().navigate(
-                    R.id.action_homeFragment_to_courseDetailsFragment,
-                    bundleOf("courseId" to "id")
-                )
+
             },
             onFavoriteClick = { course ->
                 CoursesLogger.d("HomeFragment - onFavoriteClick: ${course.title}")

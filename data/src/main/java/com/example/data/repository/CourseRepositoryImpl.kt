@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -44,6 +43,11 @@ class CourseRepositoryImpl : CourseRepository {
         }
         _courses.value = toggledCourse
         return Result.success(Unit)
+    }
+
+    override suspend fun filterByDate() {
+        val sortedCourses = _courses.value.sortedBy { it.startDate }
+        _courses.value = sortedCourses
     }
 
     private suspend fun simulateFetchingFromInternet(): List<CourseData> {
