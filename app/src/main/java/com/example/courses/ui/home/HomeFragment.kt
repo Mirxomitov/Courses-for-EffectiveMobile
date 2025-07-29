@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.util.CoursesLogger
-import com.example.courses.R
 import com.example.courses.databinding.FragmentHomeBinding
 import com.example.courses.ui.home.adapter.CourseItemAdapter
 import com.example.courses.ui.home.adapter.CourseItemWithImage
@@ -41,6 +38,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setListeners()
+        binding.tvFilter.setOnClickListener {
+            viewModel.filterByDate()
+        }
     }
 
     override fun onDestroyView() {
@@ -85,12 +85,7 @@ class HomeFragment : Fragment() {
 
     private fun setAdapter() {
         adapter = CourseItemAdapter(
-            onClick = { course ->
-                findNavController().navigate(
-                    R.id.action_homeFragment_to_courseDetailsFragment,
-                    bundleOf("courseId" to "id")
-                )
-            },
+            onClick = { course -> },
             onFavoriteClick = { course ->
                 CoursesLogger.d("HomeFragment - onFavoriteClick: ${course.title}")
                 viewModel.onFavoriteClick(course)

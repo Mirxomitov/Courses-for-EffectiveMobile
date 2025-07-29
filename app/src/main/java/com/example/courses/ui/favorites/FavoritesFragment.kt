@@ -91,12 +91,7 @@ class FavoritesFragment : Fragment() {
 
     private fun setAdapter() {
         adapter = FavoriteCourseItemAdapter(
-            onClick = { course ->
-                findNavController().navigate(
-                    R.id.action_favoritesFragment_to_courseDetailsFragment,
-                    bundleOf("courseId" to "id")
-                )
-            },
+            onClick = { course -> },
             onFavoriteClick = { course ->
                 CoursesLogger.d("FavoritesFragment - onFavoriteClick: ${course.title}")
                 viewModel.onFavoriteClick(course)

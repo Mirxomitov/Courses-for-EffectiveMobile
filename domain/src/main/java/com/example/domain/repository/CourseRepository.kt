@@ -8,5 +8,6 @@ interface CourseRepository {
 
     suspend fun getAllCourses(): Result<List<CourseData>>
     suspend fun toggleFavorite(course: CourseData) : Result<Unit>
+    suspend fun filterByDate() : Result<Unit>
 
 }

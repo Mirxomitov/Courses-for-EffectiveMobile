@@ -2,13 +2,11 @@ package com.example.courses
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.NavigationUiSaveStateControl
 import androidx.navigation.ui.setupWithNavController
 import com.example.courses.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    lateinit var navController: NavController
 
     private val authDestinations = setOf(
         R.id.loginFragment,
@@ -28,9 +27,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupNavigation()
+    }
+
+    private fun setupNavigation() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        val navController = navHostFragment.navController
+        navController = navHostFragment.navController
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.bottomNav.isVisible = destination.id !in authDestinations
@@ -51,9 +54,10 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNav.apply {
             itemIconTintList = colorStateList
             itemTextColor = colorStateList
-            itemActiveIndicatorColor = ColorStateList.valueOf(getColor(R.color.bottomNavBarBackground))
+            itemActiveIndicatorColor =
+                ColorStateList.valueOf(getColor(R.color.bottomNavBarBackground))
         }
 
-        binding.bottomNav.setupWithNavController(navController)
+       binding.bottomNav.setupWithNavController(navController)
     }
 }

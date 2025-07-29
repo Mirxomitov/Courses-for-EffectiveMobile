@@ -1,5 +1,6 @@
 package com.example.data.repository
 
+import com.example.core.util.CoursesLogger
 import com.example.domain.model.CourseData
 import com.example.domain.repository.CourseRepository
 import kotlinx.coroutines.CoroutineScope
@@ -10,7 +11,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -43,6 +43,13 @@ class CourseRepositoryImpl : CourseRepository {
             }
         }
         _courses.value = toggledCourse
+        return Result.success(Unit)
+    }
+
+    override suspend fun filterByDate(): Result<Unit> {
+        CoursesLogger.d("before" + _courses.value.joinToString { "$it\n" })
+        _courses.value = _courses.value.sortedBy { it.startDate }
+        CoursesLogger.d("after" + _courses.value.joinToString { "$it\n" })
         return Result.success(Unit)
     }
 
